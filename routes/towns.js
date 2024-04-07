@@ -129,7 +129,7 @@ router.put("/:id", auth, async (req, res) => {
     }
 })
 
-//for user get info and name of country
+//for user get info and name of country function using: getInfoDB
 // server:// towns/singleInfo?name=israel
 router.get("/singleInfo", async (req, res) => {
     let countryName = req.query.name;
