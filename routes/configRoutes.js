@@ -5,6 +5,7 @@ const tripsR = require("./trips");
 const townsR = require("./towns");
 const placesR = require("./places");
 const uploadR = require("./upload");
+const whatsappR = require("./whatsappRoute");
 
 //define rout for every page
 exports.routesInit = (app) => {
@@ -14,4 +15,6 @@ exports.routesInit = (app) => {
     app.use("/towns", townsR);
     app.use("/places", placesR);
     app.use("/upload", uploadR);
+    app.use("/api/whatsapp", whatsappR);
 }
+

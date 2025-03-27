@@ -28,6 +28,9 @@ app.use(express.json());
 //expose public folder to client side
 app.use(express.static(path.join(__dirname, "public")));
 
+
+
+
 //send to routs the capability of app
 routesInit(app);
 
