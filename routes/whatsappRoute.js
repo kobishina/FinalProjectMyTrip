@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 const twilio = require("twilio");
+const { configs } = require("../configs/secrets");
 
-// Twilio Credentials (Replace with your real credentials)
-const accountSid = "AC68ef1082c242500e4535903210a45660";
-const authToken = "22d5f54cc136e5e82cfbb8e1233a8ccd";
+// Twilio Credentials/Approvals 
+const accountSid = configs.accountSid;
+const authToken = configs.authToken;
 const client = twilio(accountSid, authToken);
 
 router.post("/sendWhatsapp", async (req, res) => {
@@ -13,8 +14,9 @@ router.post("/sendWhatsapp", async (req, res) => {
         const message = `לקוח חדש רוצה פרטים:\nשם: ${name}\nאימייל: ${email}\nטלפון: ${phone}`;
 
         await client.messages.create({
-            from: "whatsapp:+14155238886", // Twilio WhatsApp Number
-            to: "whatsapp:+972539313477",  // Your WhatsApp Number
+            from: `whatsapp:${configs.fromWA}`, // Twilio WhatsApp Number
+
+            to: `whatsapp:${configs.toWA}`,  // my WhatsApp Number
             body: message
         });
 
